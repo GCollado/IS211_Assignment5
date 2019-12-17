@@ -1,3 +1,5 @@
+#! usr/bin/env python
+#! -*- coding: utf-8 -*-
 """
 =============================================
 Part 1 -Implement Simulations with One Server
@@ -102,6 +104,9 @@ def simulateOneServer(file):
             request = Request(file_request[0])
             server_queue.enqueue(request)
 
+def new_server_request():
+    pass
+
 """
         if (not server.busy()) and (not server_queue.is_empty()):
             next_task = server_queue.dequeue()
@@ -129,7 +134,7 @@ class Stack:
         return self.items.pop(0)
 
     def peek(self):
-        return self.itemts[0]
+        return self.items[0]
 
     def size(self):
         return len(self.items)
