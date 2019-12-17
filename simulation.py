@@ -91,15 +91,15 @@ def simulateOneServer(file):
     server_queue = Queue()
     waiting_times = []
 
-    # if new_server_request():
-    requests = urllib.request.urlopen(file).read()
-    requests = str(requests).split('\\r\\n')
+    if new_server_request():
+        requests = urllib.request.urlopen(file).read()
+        requests = str(requests).split('\\r\\n')
     for file_request in requests:
         file_request = file_request.strip("\\'").strip("b\\'")
         file_request = file_request.split(',')
-        #request = Request(current_second)
-        # server.timestamp, request.request, server.duration = line[0], line[1], line[2]
-        # server_queue.enqueue(line)
+        request = Request(current_second)
+        server.timestamp, request.request, server.duration = line[0], line[1], line[2]
+        server_queue.enqueue(line)
         if new_server_request():
             request = Request(file_request[0])
             server_queue.enqueue(request)
